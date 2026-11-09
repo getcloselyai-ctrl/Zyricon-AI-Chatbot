@@ -1031,6 +1031,15 @@ function App() {
       </aside>
       <main className="main">
         <header className="topbar">
+          <button
+            className="mobile-sidebar-trigger"
+            type="button"
+            onClick={() => setSidebarCollapsed(false)}
+            aria-label="Open sidebar"
+            title="Open sidebar"
+          >
+            <PanelLeftOpen size={19} />
+          </button>
           <span className="breadcrumb">
             <strong>{activeConversation?.title || "New chat"}</strong>
           </span>
