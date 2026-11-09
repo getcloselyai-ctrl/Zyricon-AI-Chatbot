@@ -3014,3 +3014,51 @@ button:disabled { cursor: not-allowed; opacity: .4; }
     min-width: 0;
   }
 }
+
+
+/* MOBILE WELCOME SCREEN: make all four suggestion cards reachable.
+   The composer remains fixed in the main flex layout while this region scrolls. */
+@media (max-width: 600px) {
+  .app > .main > .welcome {
+    flex: 1 1 0 !important;
+    min-height: 0 !important;
+    height: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    justify-content: flex-start !important;
+    align-items: center !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    overscroll-behavior-y: contain;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-y;
+    scrollbar-width: thin;
+    padding: 24px 15px 32px !important;
+  }
+
+  .app > .main > .welcome .orb,
+  .app > .main > .welcome .eyebrow,
+  .app > .main > .welcome h1,
+  .app > .main > .welcome p {
+    flex-shrink: 0 !important;
+  }
+
+  .app > .main > .welcome .suggestions {
+    display: grid !important;
+    flex: 0 0 auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 12px !important;
+    margin: 24px auto 0 !important;
+    padding: 0 0 12px !important;
+  }
+
+  .app > .main > .welcome .suggestions > button {
+    width: 100% !important;
+    min-height: 96px !important;
+    flex: 0 0 auto !important;
+    cursor: pointer;
+    touch-action: manipulation;
+  }
+}
