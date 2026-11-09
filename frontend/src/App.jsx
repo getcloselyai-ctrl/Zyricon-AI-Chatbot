@@ -102,6 +102,7 @@ function App() {
   const [introVisible, setIntroVisible] = useState(true);
   const [introVariant, setIntroVariant] = useState("first");
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+  const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
   const [conversationAction, setConversationAction] = useState(null);
   const [conversationActionTitle, setConversationActionTitle] = useState("");
   const [conversationActionError, setConversationActionError] = useState("");
@@ -247,6 +248,7 @@ function App() {
 
   const createNewChat = async () => {
     if (loading) return;
+    setMobileSidebarOpen(false);
     try {
       const response = await fetch(`${API}/conversations`, {
         method: "POST",
@@ -270,6 +272,7 @@ function App() {
 
   const openConversation = async (conversationId) => {
     if (loading) return;
+    setMobileSidebarOpen(false);
     try {
       const response = await fetch(`${API}/conversations/${conversationId}`);
       if (!response.ok) throw new Error("Could not open conversation");
@@ -933,7 +936,7 @@ function App() {
   );
 
   return (
-    <div className={`app ${introVisible ? "app--intro-active" : "app--intro-enter"} ${sidebarCollapsed ? "app--sidebar-collapsed" : ""}`}>
+    <div className={`app ${introVisible ? "app--intro-active" : "app--intro-enter"} ${sidebarCollapsed ? "app--sidebar-collapsed" : ""} ${mobileSidebarOpen ? "app--mobile-sidebar-open" : ""}`}>
       {introVisible && (
         <div
           className={`intro-screen intro-screen--${introVariant}`}
@@ -1028,9 +1031,26 @@ function App() {
           </button>
         </div>
       </aside>
+      {mobileSidebarOpen && (
+        <button
+          className="mobile-sidebar-backdrop"
+          type="button"
+          aria-label="Close navigation menu"
+          onClick={() => setMobileSidebarOpen(false)}
+        />
+      )}
 
       <main className="main">
         <header className="topbar">
+          <button
+            className="mobile-menu-toggle"
+            type="button"
+            aria-label={mobileSidebarOpen ? "Close navigation menu" : "Open navigation menu"}
+            aria-expanded={mobileSidebarOpen}
+            onClick={() => setMobileSidebarOpen((open) => !open)}
+          >
+            <PanelLeftOpen size={19} />
+          </button>
           <span className="breadcrumb">
             <strong>{activeConversation?.title || "New chat"}</strong>
           </span>
