@@ -839,6 +839,10 @@ function App() {
   };
 
   const openMemoryManager = async () => {
+    // Dismiss the mobile navigation drawer before presenting the memory dialog.
+    if (window.matchMedia("(max-width: 600px)").matches) {
+      setSidebarCollapsed(true);
+    }
     setMemoryManagerOpen(true);
     await loadMemories();
   };
