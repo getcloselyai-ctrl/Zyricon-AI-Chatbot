@@ -2451,3 +2451,60 @@ button:disabled { cursor: not-allowed; opacity: .4; }
 .intro-lockup::after {
   display: none !important;
 }
+
+
+/* MOBILE SIDEBAR TOGGLE FIX
+   Keep the collapsed rail fixed to the viewport so it never re-enters
+   the app flex layout or pushes/resizes the chat when the drawer closes. */
+@media (max-width: 600px) {
+  .app--sidebar-collapsed .sidebar {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 900;
+    width: 56px !important;
+    min-width: 56px !important;
+    flex: 0 0 56px !important;
+    height: 100dvh;
+    padding: 18px 8px !important;
+    overflow: hidden;
+    border-right: 1px solid #292929;
+    box-shadow: none;
+    transform: none;
+  }
+
+  .app--sidebar-collapsed .sidebar > :not(.brand) {
+    display: none !important;
+  }
+
+  .app--sidebar-collapsed .brand {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 0;
+    padding: 0;
+    margin: 0;
+  }
+
+  .app--sidebar-collapsed .brand > span,
+  .app--sidebar-collapsed .brand .logo {
+    display: none !important;
+  }
+
+  .app--sidebar-collapsed .brand .collapse {
+    display: grid !important;
+    width: 36px;
+    height: 36px;
+    flex: 0 0 36px;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  .app--sidebar-collapsed .main {
+    width: 100%;
+    min-width: 0;
+    flex: 1 1 0;
+  }
+}
