@@ -2398,3 +2398,56 @@ button:disabled { cursor: not-allowed; opacity: .4; }
   .conversation-dialog-input,
   .conversation-dialog-actions button { transition: none; }
 }
+
+/* =========================================
+   FINAL MOBILE SIDEBAR FIX (600px and under)
+   Expanded: sidebar slides over the chat as a drawer.
+   Collapsed: narrow strip with only the open button.
+========================================= */
+@media (max-width: 600px) {
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 900;
+    width: min(84vw, 300px);
+    min-width: 0;
+    flex: none;
+    padding: 18px 14px 16px;
+    overflow-y: auto;
+    box-shadow: 10px 0 40px rgba(0, 0, 0, .5);
+  }
+
+  .sidebar .brand { justify-content: flex-start; padding: 0 4px; }
+  .sidebar .brand > span { display: inline; }
+  .sidebar .new-chat { display: flex; }
+  .sidebar .search { display: flex; }
+  .sidebar .section-title { display: block; }
+  .sidebar .conversation-list { display: flex; }
+  .sidebar .nav { display: flex; }
+  .sidebar .sidebar-bottom { display: block; }
+
+  .brand .collapse { display: grid !important; margin-left: auto; }
+
+  .app--sidebar-collapsed .sidebar {
+    position: relative;
+    width: 56px;
+    min-width: 56px;
+    flex: 0 0 56px;
+    padding: 18px 8px;
+    overflow: hidden;
+    box-shadow: none;
+  }
+
+  .app--sidebar-collapsed .sidebar > :not(.brand) { display: none !important; }
+  .app--sidebar-collapsed .brand { justify-content: center; padding: 0; margin: 0; }
+  .app--sidebar-collapsed .brand > span,
+  .app--sidebar-collapsed .brand .logo { display: none !important; }
+  .app--sidebar-collapsed .brand .collapse { margin: 0 auto; }
+}
+
+/* Remove decorative line beneath Zyricon wordmark */
+.intro-lockup::after {
+  display: none !important;
+}
