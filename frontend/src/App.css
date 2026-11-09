@@ -3062,3 +3062,9 @@ button:disabled { cursor: not-allowed; opacity: .4; }
     touch-action: manipulation;
   }
 }
+
+
+/* Memory dialog must sit above the mobile navigation drawer/backdrop. */
+.memory-modal-backdrop {
+  z-index: 1400 !important;
+}
