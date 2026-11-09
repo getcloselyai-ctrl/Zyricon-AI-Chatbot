@@ -261,7 +261,14 @@ function App() {
       setMessages([]);
       setInput("");
       setEditingMessageId(null);
-      inputRef.current?.focus();
+
+      // On mobile, close the navigation drawer after starting a chat
+      // so it cannot cover the message composer.
+      if (window.matchMedia("(max-width: 600px)").matches) {
+        setSidebarCollapsed(true);
+      }
+
+      requestAnimationFrame(() => inputRef.current?.focus());
     } catch (error) {
       console.error("New chat error:", error);
       alert("Could not create a new chat. Check your backend.");
