@@ -2508,3 +2508,46 @@ button:disabled { cursor: not-allowed; opacity: .4; }
     flex: 1 1 0;
   }
 }
+
+
+/* =========================================
+   ZYRICON — MOBILE COLLAPSED RAIL LAYOUT
+   Keep the chat viewport beside the fixed rail,
+   rather than rendering chat content underneath it.
+========================================= */
+@media (max-width: 600px) {
+  .app--sidebar-collapsed .main {
+    width: calc(100% - 56px);
+    max-width: calc(100% - 56px);
+    min-width: 0;
+    margin-left: 56px;
+    flex: 1 1 calc(100% - 56px);
+  }
+
+  .app--sidebar-collapsed .main > *,
+  .app--sidebar-collapsed .main .chat-messages,
+  .app--sidebar-collapsed .main .composer-area,
+  .app--sidebar-collapsed .main .welcome {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .app--sidebar-collapsed .main .suggestions {
+    width: 100%;
+    max-width: 100%;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .app--sidebar-collapsed .main .composer,
+  .app--sidebar-collapsed .main .composer-inner {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .app--sidebar-collapsed .main .message-body,
+  .app--sidebar-collapsed .main .message-content {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+}
