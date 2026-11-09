@@ -2795,3 +2795,100 @@ button:disabled { cursor: not-allowed; opacity: .4; }
 @media (prefers-reduced-motion: reduce) {
   .app .sidebar { transition: none; }
 }
+
+
+/* =========================================
+   RESPONSIVE LAYER: phones, tablets, laptops
+   Added last so it overrides earlier rules.
+========================================= */
+
+/* Laptops and large desktop screens */
+@media (min-width: 1280px) {
+  .sidebar {
+    width: 290px;
+    min-width: 290px;
+    flex-basis: 290px;
+  }
+
+  .topbar { padding: 0 48px; }
+  .chat-messages { padding: 44px 48px 34px; }
+  .composer-area { padding: 14px 48px 20px; }
+}
+
+/* Phones */
+@media (max-width: 600px) {
+  html, body {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  .topbar {
+    height: 56px;
+    min-height: 56px;
+    flex-basis: 56px;
+    padding: 0 14px;
+    font-size: 12px;
+  }
+
+  .chat-messages {
+    gap: 22px;
+    padding: 16px 12px 16px;
+  }
+
+  .message { gap: 9px; }
+  .message.assistant .message-content { max-width: 100%; }
+  .message.user .message-content { max-width: 88%; }
+  .message-body { font-size: 14px; line-height: 1.7; }
+
+  /* Touch screens have no hover, so keep message actions visible. */
+  .message-tools { opacity: 1; }
+
+  .composer-area {
+    padding: 8px 10px calc(10px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .composer {
+    min-height: 0;
+    padding: 10px 12px 8px 14px;
+    border-radius: 14px;
+  }
+
+  /* 16px stops iPhone Safari from zooming in on focus. */
+  .composer > textarea { font-size: 16px; }
+
+  .composer-bottom { margin-top: 2px; }
+  .attach { padding: 6px 8px; }
+
+  .welcome { padding: 18px 14px; }
+  .welcome h1 { font-size: 30px; }
+  .welcome p { font-size: 12.5px; }
+
+  .suggestions { gap: 10px; }
+  .suggestions button {
+    min-height: 80px;
+    padding: 14px 16px;
+  }
+
+  .sidebar .conversation-open {
+    min-height: 46px;
+  }
+
+  .sidebar .conversation-open span { font-size: 13px; }
+
+  /* Show delete and rename buttons without hovering. */
+  .sidebar .conversation-actions { opacity: 1; }
+  .sidebar .conversation-actions button {
+    width: 32px;
+    height: 32px;
+  }
+
+  .memory-modal,
+  .conversation-dialog { width: 100%; }
+}
+
+/* Small phones */
+@media (max-width: 360px) {
+  .welcome h1 { font-size: 26px; }
+  .chat-messages { padding: 12px 8px; }
+  .suggestions button { min-height: 70px; }
+}
