@@ -2970,3 +2970,47 @@ button:disabled { cursor: not-allowed; opacity: .4; }
     place-items: center !important;
   }
 }
+
+
+/* Clickable Zyricon brand: preserve the existing wordmark appearance. */
+.brand-home {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  text-align: left;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.brand-home .logo {
+  flex: 0 0 39px;
+}
+
+.brand-wordmark {
+  font-size: 22px;
+  font-weight: 750;
+  letter-spacing: -1.2px;
+  white-space: nowrap;
+}
+
+.brand-home:focus-visible {
+  outline: 2px solid #888;
+  outline-offset: 4px;
+  border-radius: 8px;
+}
+
+@media (max-width: 600px) {
+  .app > .sidebar > .brand > .brand-home {
+    flex: 0 1 auto;
+    min-width: 0;
+  }
+}
