@@ -101,7 +101,7 @@ function TypingIndicator({ label = "Zyricon is thinking" }) {
 function App() {
   const [introVisible, setIntroVisible] = useState(true);
   const [introVariant, setIntroVariant] = useState("first");
-  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(() => window.matchMedia("(max-width: 600px)").matches);
   const [conversationAction, setConversationAction] = useState(null);
   const [conversationActionTitle, setConversationActionTitle] = useState("");
   const [conversationActionError, setConversationActionError] = useState("");
@@ -247,6 +247,10 @@ function App() {
 
   const createNewChat = async () => {
     if (loading) return;
+    // Close the mobile drawer immediately, before waiting for the API.
+    if (window.matchMedia("(max-width: 600px)").matches) {
+      setSidebarCollapsed(true);
+    }
     try {
       const response = await fetch(`${API}/conversations`, {
         method: "POST",
@@ -277,7 +281,9 @@ function App() {
 
   const openConversation = async (conversationId) => {
     if (loading) return;
-    setMobileSidebarOpen(false);
+    if (window.matchMedia("(max-width: 600px)").matches) {
+      setSidebarCollapsed(true);
+    }
     try {
       const response = await fetch(`${API}/conversations/${conversationId}`);
       if (!response.ok) throw new Error("Could not open conversation");
