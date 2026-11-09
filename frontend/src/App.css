@@ -2858,3 +2858,37 @@ button:disabled { cursor: not-allowed; opacity: .4; }
 @media (prefers-reduced-motion: reduce) {
   .app > .sidebar { transition: none !important; }
 }
+
+
+/* Mobile menu control visual reset — prevent browser/button theme overrides. */
+@media (max-width: 600px) {
+  .app .main .topbar > button.mobile-sidebar-trigger {
+    display: none;
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    padding: 0;
+    border: 1px solid #343434;
+    border-radius: 11px;
+    outline: none;
+    background: #1b1b1b;
+    color: #ededed;
+    box-shadow: none;
+    appearance: none;
+    -webkit-appearance: none;
+  }
+
+  .app.app--sidebar-collapsed .main .topbar > button.mobile-sidebar-trigger {
+    display: inline-flex;
+  }
+
+  .app .main .topbar > button.mobile-sidebar-trigger svg {
+    display: block;
+    color: inherit;
+    stroke: currentColor;
+  }
+
+  .app .main .topbar > button.mobile-sidebar-trigger:active {
+    background: #292929;
+  }
+}
