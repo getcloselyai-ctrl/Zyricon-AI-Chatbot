@@ -2926,3 +2926,22 @@ button:disabled { cursor: not-allowed; opacity: .4; }
     opacity: 1 !important;
   }
 }
+
+
+/* Mobile drawer backdrop: tap outside to dismiss. */
+.mobile-drawer-backdrop { display: none; }
+@media (max-width: 600px) {
+  .app > .mobile-drawer-backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100dvh;
+    z-index: 1190;
+    border: 0;
+    background: rgba(0,0,0,.55);
+    padding: 0;
+    cursor: default;
+  }
+  .app.app--sidebar-collapsed > .mobile-drawer-backdrop { display: none; }
+}
