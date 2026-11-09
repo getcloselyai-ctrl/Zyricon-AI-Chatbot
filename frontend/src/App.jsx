@@ -272,7 +272,10 @@ function App() {
         setSidebarCollapsed(true);
       }
 
-      requestAnimationFrame(() => inputRef.current?.focus());
+      // Do not summon the mobile keyboard while the drawer is animating.
+      if (!window.matchMedia("(max-width: 600px)").matches) {
+        requestAnimationFrame(() => inputRef.current?.focus());
+      }
     } catch (error) {
       console.error("New chat error:", error);
       alert("Could not create a new chat. Check your backend.");
@@ -293,7 +296,7 @@ function App() {
       setMessages((data.messages || []).map((message) => ({ ...message, attachments: message.attachments || [] })));
       setInput("");
       setEditingMessageId(null);
-      inputRef.current?.focus();
+      if (!window.matchMedia("(max-width: 600px)").matches) inputRef.current?.focus();
     } catch (error) {
       console.error("Open chat error:", error);
       alert("Could not open this conversation.");
@@ -961,6 +964,14 @@ function App() {
           </div>
         </div>
       )}
+      {!sidebarCollapsed && (
+        <button
+          type="button"
+          className="mobile-drawer-backdrop"
+          aria-label="Close sidebar"
+          onClick={() => setSidebarCollapsed(true)}
+        />
+      )}
       <aside className="sidebar">
         <div className="brand">
           <div className="logo"><Sparkles size={18} /></div>
@@ -1221,7 +1232,6 @@ function App() {
             )}
             <textarea
               ref={inputRef}
-              autoFocus
               rows={1}
               value={input}
               onChange={(event) => setInput(event.target.value)}
