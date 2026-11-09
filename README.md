@@ -1,70 +1,162 @@
-# Zyricon — AI Assistant
+# Zyricon | AI Chatbot
 
-Zyricon is a full-stack AI chat application built with **React**, **Vite**, **FastAPI**, and **Google Gemini**. It provides a dark chat workspace with streaming assistant responses, persistent conversations, file attachments, and an editable memory manager.
+<p align="center">
+  <img src="https://readme-typing-svg.demolab.com?font=Inter&weight=600&size=27&duration=3500&pause=1200&color=94A3B8&center=true&vCenter=true&width=650&lines=Zyricon+AI;Intelligent+Conversations.;A+Smarter+AI+Workspace." alt="Zyricon AI" />
+</p>
 
-> This repository contains the application source. API credentials and local conversation data are intentionally excluded.
+<p align="center">
+  <strong>A Full-Stack AI Conversational Platform</strong>
+  <br />
+  An intelligent workspace for AI-powered conversations, document analysis, conversation management and contextual memory.
+</p>
 
-## Features
+<p align="center">
+  <a href="https://zyricon-web-pg.onrender.com/">
+    <img src="https://img.shields.io/badge/ACCESS_APPLICATION-Launch_Zyricon-334155?style=for-the-badge&labelColor=111827" alt="Launch Zyricon" />
+  </a>
+</p>
 
-- Streaming assistant responses powered by the Gemini API
-- Persistent conversation history backed by SQLite
-- Create, rename, delete, search, and reopen conversations
-- Upload and analyze supported documents, spreadsheets, text files, and images
-- Markdown rendering, GitHub-flavored Markdown, syntax-highlighted code blocks, and copy actions
-- Memory manager with automatic-memory controls and editable saved memories
-- Responsive dark interface with animated message and intro transitions
+<p align="center">
+  <img src="https://img.shields.io/badge/React-19-64748B?style=flat-square&logo=react&logoColor=white" />
+  <img src="https://img.shields.io/badge/FastAPI-Backend-64748B?style=flat-square&logo=fastapi&logoColor=white" />
+  <img src="https://img.shields.io/badge/Python-Backend-64748B?style=flat-square&logo=python&logoColor=white" />
+  <img src="https://img.shields.io/badge/Google_Gemini-AI-64748B?style=flat-square&logo=google&logoColor=white" />
+  <img src="https://img.shields.io/badge/SQLite-Database-64748B?style=flat-square&logo=sqlite&logoColor=white" />
+</p>
 
-## Technology stack
+---
 
-**Frontend:** React 19, Vite, JavaScript, Lucide React, React Markdown, Remark GFM, Highlight.js  
-**Backend:** Python, FastAPI, Uvicorn, Pydantic, Google Gen AI SDK, SQLite  
-**Document processing:** PyMuPDF, python-docx, pandas, openpyxl
+## Overview
 
-## Project structure
+Zyricon is a full-stack AI conversational application developed to provide an integrated environment for interacting with large language models.
+
+Built using React, FastAPI and Google's Gemini API, the platform combines conversational AI capabilities with persistent conversation management, document processing and contextual memory functionality.
+
+The application focuses on usability, modular architecture and the integration of modern AI capabilities into a practical web interface.
+
+## Core Capabilities
+
+| Capability | Implementation |
+|---|---|
+| AI Conversations | Gemini-powered conversational interface |
+| Response Streaming | Progressive assistant response generation |
+| Conversation Management | Create, search, rename, delete and retrieve conversations |
+| Document Analysis | Processing of documents, spreadsheets and images |
+| Contextual Memory | Memory management and automatic-memory controls |
+| Rich Text Rendering | Markdown and GitHub-flavored Markdown |
+| Code Presentation | Syntax highlighting and code-copy functionality |
+| User Interface | Responsive interface with animated transitions |
+
+## Technology Stack
+
+**Frontend**
+- React 19
+- Vite
+- JavaScript
+- Lucide React
+- React Markdown
+- Remark GFM
+- Highlight.js
+
+**Backend**
+- Python
+- FastAPI
+- Uvicorn
+- Pydantic
+- Google Gen AI SDK
+
+**Database**
+- SQLite
+
+**Document Processing**
+- PyMuPDF
+- python-docx
+- Pandas
+- OpenPyXL
+
+**Deployment**
+- Render
+
+## Architecture
+
+The application follows a frontend-backend architecture, with the React client communicating with a FastAPI backend that integrates Gemini AI and SQLite persistence.
+
+```text
+              CLIENT
+                |
+                v
+          REACT FRONTEND
+             (Vite)
+                |
+                v
+          FASTAPI BACKEND
+                |
+         +------+------+
+         |             |
+         v             v
+     GEMINI API      SQLITE
+         |
+         v
+    AI GENERATION
+         |
+         v
+    RESPONSE STREAM
+         |
+         v
+     REACT CLIENT
+```
+
+## Repository Structure
 
 ```text
 Zyricon-AI-Chatbot/
+│
 ├── backend/
 │   ├── main.py
 │   ├── requirements.txt
 │   └── .env.example
+│
 ├── frontend/
 │   ├── src/
 │   │   ├── App.jsx
 │   │   ├── App.css
 │   │   ├── index.css
 │   │   └── main.jsx
+│   │
 │   ├── index.html
 │   ├── package.json
 │   ├── package-lock.json
 │   ├── vite.config.js
 │   └── eslint.config.js
+│
 └── .gitignore
 ```
 
-## Prerequisites
+## Local Development
 
-- Python 3.10 or newer
-- Node.js 20.19+ or 22.12+ (required by current Vite releases)
-- A Google Gemini API key
+### Requirements
 
-## Run locally
+- Python 3.10 or later
+- Node.js 20.19+ or 22.12+
+- Google Gemini API key
 
 ### 1. Clone the repository
 
 ```bash
 git clone https://github.com/getcloselyai-ctrl/Zyricon-AI-Chatbot.git
+
 cd Zyricon-AI-Chatbot
 ```
 
-### 2. Configure and start the backend
+### 2. Configure the backend
 
 ```bash
 cd backend
+
 python -m venv .venv
 ```
 
-Activate the virtual environment:
+Activate the virtual environment.
 
 **Windows PowerShell**
 
@@ -78,54 +170,107 @@ Activate the virtual environment:
 source .venv/bin/activate
 ```
 
-Install dependencies:
+Install the dependencies:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-Copy `.env.example` to `.env` inside `backend/` and replace the placeholder with your Gemini API key:
+### 3. Configure environment variables
+
+Create a `.env` file inside the backend directory.
 
 ```env
 GEMINI_API_KEY=your_actual_api_key
 ```
 
-Start the API:
+Obtain an API key from [Google AI Studio](https://aistudio.google.com/).
+
+### 4. Launch the backend
 
 ```bash
 uvicorn main:app --reload --port 8000
 ```
 
-The API runs at `http://127.0.0.1:8000`. Interactive API documentation is available at `http://127.0.0.1:8000/docs`.
+Backend endpoint:
 
-### 3. Start the frontend
+`http://127.0.0.1:8000`
 
-Open a second terminal from the repository root:
+Interactive API documentation:
+
+`http://127.0.0.1:8000/docs`
+
+### 5. Launch the frontend
+
+Open a separate terminal.
 
 ```bash
 cd frontend
+
 npm install
+
 npm run dev
 ```
 
-Open the local URL printed by Vite (normally `http://localhost:5173`).
+Access the development server at the local URL provided by Vite, typically:
 
-## Configuration notes
+`http://localhost:5173`
 
-- The frontend currently targets the local backend at `http://127.0.0.1:8000`. For a hosted deployment, update the API base URL in `frontend/src/App.jsx` and configure the backend CORS origins for the deployed frontend domain.
-- The backend creates `zyricon.db` locally on first run. This database is not included in version control. Conversation history is therefore local to the backend instance unless persistent storage is configured for deployment.
-- Keep `backend/.env` private. Never paste API keys into source code or commit them.
+## Supported File Formats
 
-## Supported attachments
+| File Category | Formats |
+|---|---|
+| Documents | PDF, DOCX, TXT |
+| Spreadsheets | CSV, XLSX |
+| Images | PNG, JPG, JPEG, WEBP |
 
-The frontend accepts PDF, DOCX, TXT, CSV, XLSX, PNG, JPG, JPEG, and WEBP files. The current UI enforces a maximum of five attachments per message and a 10 MB limit per file.
+**Upload constraints**
+- Maximum 5 attachments per message.
+- Maximum 10 MB per attachment.
 
-## Security
+## Configuration and Security
 
-- Do not commit `.env` files, API keys, SQLite databases, user uploads, or local environment folders.
-- Rotate the Gemini API key immediately if it is ever exposed publicly.
-- Before deploying publicly, review authentication, rate limiting, CORS allowlists, data retention, and file-upload handling for your intended usage.
+- Store sensitive credentials in environment variables.
+- Never commit API keys or `.env` files.
+- Configure backend CORS origins for the deployment environment.
+- Ensure database persistence is configured appropriately for hosted deployments.
+- Review authentication, rate limiting, data retention and upload validation before production use.
 
-## License
+## Engineering Scope
 
-No license has been added yet. Unless a license is added, normal copyright restrictions apply to reuse of this source.
+The project demonstrates practical implementation of:
+
+- Large Language Model integration
+- Full-stack application architecture
+- RESTful API development
+- Database persistence
+- Document processing pipelines
+- Contextual memory management
+- Asynchronous response streaming
+- Frontend-backend integration
+- Application deployment
+
+## Potential Enhancements
+
+- Authentication and user-specific workspaces
+- Advanced retrieval-augmented generation (RAG)
+- Extended contextual memory capabilities
+- Multi-model AI integration
+- Voice interaction
+- Conversation export and organization
+
+## Developer
+
+**Akshat Doshi**
+
+Data Science | Machine Learning | AI Engineering
+
+[GitHub Profile](https://github.com/getcloselyai-ctrl)
+
+---
+
+<p align="center">
+  <strong>ZYRICON</strong>
+  <br />
+  <sub>Intelligence. Context. Productivity.</sub>
+</p>
