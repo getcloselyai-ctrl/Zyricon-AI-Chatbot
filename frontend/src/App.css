@@ -2945,3 +2945,28 @@ button:disabled { cursor: not-allowed; opacity: .4; }
   }
   .app.app--sidebar-collapsed > .mobile-drawer-backdrop { display: none; }
 }
+
+
+/* Align the sidebar collapse control to the drawer's far-right edge. */
+@media (max-width: 600px) {
+  .app > .sidebar > .brand {
+    width: 100% !important;
+    box-sizing: border-box !important;
+    align-self: stretch !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    padding-left: 4px !important;
+    padding-right: 4px !important;
+  }
+
+  .app > .sidebar > .brand > .collapse {
+    display: grid !important;
+    flex: 0 0 36px !important;
+    width: 36px !important;
+    height: 36px !important;
+    margin-left: auto !important;
+    margin-right: 0 !important;
+    place-items: center !important;
+  }
+}
