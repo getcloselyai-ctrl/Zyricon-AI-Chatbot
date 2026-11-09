@@ -974,8 +974,16 @@ function App() {
       )}
       <aside className="sidebar">
         <div className="brand">
-          <div className="logo"><Sparkles size={18} /></div>
-          <span>zyricon<span className="dot">.</span></span>
+          <button
+            className="brand-home"
+            type="button"
+            onClick={() => window.location.reload()}
+            aria-label="Refresh Zyricon"
+            title="Refresh Zyricon"
+          >
+            <span className="logo"><Sparkles size={18} /></span>
+            <span className="brand-wordmark">zyricon<span className="dot">.</span></span>
+          </button>
           <button
             className="collapse"
             type="button"
