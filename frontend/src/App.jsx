@@ -35,7 +35,7 @@ import {
 import "highlight.js/styles/github-dark.css";
 import "./App.css";
 
-const API = "http://127.0.0.1:8000";
+const API = (import.meta.env.VITE_API_URL || "https://zyricon-backend.onrender.com").replace(/\/$/, "");
 
 function CodeBlock({ children, ...props }) {
   const [copied, setCopied] = useState(false);
